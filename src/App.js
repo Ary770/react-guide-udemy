@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import classes from './App.css';
 import Person from './Person/Person'
+import Persons from './Person/Persons'
 
 class App extends Component {
   state = {
@@ -47,20 +48,14 @@ class App extends Component {
     if (this.state.showPersons) {
       person = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              click={this.deletePersonHandler.bind(index)}
-              changeName={(event) => this.changeNameHandler(event, person.id)}
-              />
-            )
-          })}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.changeNameHandler}
+          />
         </div>
       );
-      // style.backgroundColor = 'red';
+
       btnClass = classes.Red;
     }
 
