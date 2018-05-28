@@ -20,7 +20,9 @@ class App extends Component {
   }
 
   changeNameHandler = (event, id) => {
-    const personIndex = this.state.persons.findIndex(p => p.id === id);
+    const personIndex = this.state.persons.findIndex( p => {
+      return p.id === id;
+    });
 
     const person = {...this.state.persons[personIndex]};
 
@@ -46,13 +48,15 @@ class App extends Component {
       person = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person
+            return (
+              <Person
               name={person.name}
               age={person.age}
               key={person.id}
               click={this.deletePersonHandler.bind(index)}
               changeName={(event) => this.changeNameHandler(event, person.id)}
               />
+            )
           })}
         </div>
       );
@@ -76,8 +80,8 @@ class App extends Component {
           <h1 className={classes['App-title']}>Hi, I'm a React App</h1>
         </header>
         <p className={assignedClasses.join(" ")}>This is really working!</p>
-        {console.log(classes.Red:hover)}
-        {console.log(this.state.persons.length)}
+
+        {console.log('state.pesons.lenght:', this.state.persons.length)}
         <br></br>
         <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
 
