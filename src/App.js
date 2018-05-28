@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
-// import Radium, {StyleRoot} from 'radium'
+import classes from './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
@@ -67,23 +66,23 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
-    const classes = [];
+    const assignedClasses = [];
 
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Hi, I'm a React App</h1>
+      <div className={classes.App}>
+        <header className={classes['App-header']}>
+        <img src={logo} className={classes['App-logo']} alt="logo" />
+          <h1 className={classes['App-title']}>Hi, I'm a React App</h1>
         </header>
-        <p className={classes.join(" ")}>This is really working!</p>
-        {console.log(classes)}
+        <p className={assignedClasses.join(" ")}>This is really working!</p>
+        {console.log(classes.App)}
         {console.log(this.state.persons.length)}
         <br></br>
         <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
